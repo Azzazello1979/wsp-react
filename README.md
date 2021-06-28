@@ -29,3 +29,10 @@ tools in this project:
 * CSS Flexbox
 * media queries
 * mobile 1st responsive design
+
+
+features:
+---------
+1. color scheme selector
+2. authentication & authorization & route guards
+3. floating navigation (right mouse click)

@@ -1,0 +1,11 @@
+.mobile-navi-wrapper {
+    display: none;
+}
+
+.navigation-wrapper {
+    width: 33%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+}

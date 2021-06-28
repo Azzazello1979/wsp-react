@@ -10,10 +10,23 @@ import MainHeader from './reusableComponents/MainHeader';
 import Footer from './reusableComponents/Footer';
 import classes from './App.module.css';
 
+import MobileNavi from './reusableComponents/MobileNavi';
+
+import { useState } from 'react';
+
 function App() {
 
+  const [contextMenuVisible, setContextMenuVisible] = useState(false);
+
+  const handleMobileNaviClick = e => {
+    //console.log(e);
+    e.preventDefault();
+    setContextMenuVisible(!contextMenuVisible);
+  };
+
   return (
-    <div>
+    <div onContextMenu={handleMobileNaviClick}>
+      <MobileNavi visible={contextMenuVisible}></MobileNavi>
       <header className={classes['app-header']}><MainHeader></MainHeader></header>
       <main className={classes['app-main']}>
         <Switch>
