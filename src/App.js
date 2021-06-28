@@ -4,14 +4,15 @@ import Login from './pageComponents/Login';
 import UserDash from './pageComponents/UserDash';
 import AdminDash from './pageComponents/AdminDash';
 import NotFound from './pageComponents/NotFound';
-import MainNav from './reusableComponents/MainNav';
+import MainHeader from './reusableComponents/MainHeader';
+
 import Footer from './reusableComponents/Footer';
 
 function App() {
 
   return (
     <div>
-      <header><MainNav></MainNav></header>
+      <header><MainHeader></MainHeader></header>
       <main>
         <Switch>
           <Route exact path="/" >
