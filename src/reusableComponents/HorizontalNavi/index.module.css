@@ -1,0 +1,23 @@
+.navi-buttons {
+    width: 80vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+button {
+    background: cornflowerblue;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+button:hover {
+    transform: translateY(-15%);
+}
+
+a.active > * {
+    background: darkcyan;
+    color: white;
+    border-radius: 8px;
+}
