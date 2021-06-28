@@ -26,6 +26,8 @@ function App() {
     e.preventDefault();
     const rect = mainDiv.current.getBoundingClientRect();
 
+    console.log(`left - ${rect.left}, top - ${rect.top}`);
+
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
@@ -36,12 +38,12 @@ function App() {
   };
 
   return (
-    <div onContextMenu={handleMobileNaviClick} className={classes['app-wrapper']}>
+    <div onContextMenu={handleMobileNaviClick} className={classes['app-wrapper']} ref={mainDiv}>
 
       <MobileNavi visible={contextMenuVisible} x={x} y={y}></MobileNavi>
 
       <header className={classes['app-header']}><MainHeader></MainHeader></header>
-      <main className={classes['app-main']} ref={mainDiv}>
+      <main className={classes['app-main']}>
         <Switch>
           <Route exact path="/" >
             <Redirect to="login" />
