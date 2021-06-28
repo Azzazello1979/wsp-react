@@ -5,6 +5,7 @@ import UserDash from './pageComponents/UserDash';
 import AdminDash from './pageComponents/AdminDash';
 import NotFound from './pageComponents/NotFound';
 import MainNav from './reusableComponents/MainNav';
+import Footer from './reusableComponents/Footer';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
           </Route>
         </Switch>
       </main>
-      <footer></footer>
+      <footer><Footer></Footer></footer>
     </div>
   );
 
