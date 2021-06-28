@@ -4,7 +4,9 @@ import HorizontalNavi from './../HorizontalNavi'
 const MainHeader = () => {
     return (
         <div className={classes['main-header-wrapper']}>
-            <HorizontalNavi></HorizontalNavi>
+            <div className={classes['navigation-wrapper']}>
+                <HorizontalNavi></HorizontalNavi>
+            </div>
         </div>
     );
 };

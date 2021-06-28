@@ -3,3 +3,11 @@
     border: 1px solid blue;
     padding: 10px;
 }
+
+.navigation-wrapper {
+    width: 33%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+}
