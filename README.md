@@ -10,9 +10,22 @@ tools in this project:
 ----------------------
 * React router
 * fetch API
-* css modules (included in create-react-app)
+* CSS modules (included in create-react-app)
 * Redux, Redux toolkit
 * Redux Thunk
+
+* React animations
+* React Hooks
+* Custom Hooks    
+
 * Jest (testing)
 * Types (TypeScript)
 * material UI (component library)
+
+* CSS transitions
+* CSS keyframes
+
+* CSS Grid
+* CSS Flexbox
+* media queries
+* mobile 1st responsive design

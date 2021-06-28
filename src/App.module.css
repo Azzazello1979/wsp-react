@@ -1,5 +1,9 @@
-.appWrapper {
-    border: 1px solid green;
-    display: flex;
-    justify-content: center;
+.app-header {
+    height: 15vh;
+}
+.app-main {
+    min-height: 70vh;
+}
+.app-footer {
+    height: 15vh;
 }
