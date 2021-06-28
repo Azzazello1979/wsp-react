@@ -5,11 +5,17 @@ import React from 'react';
 const MobileNavi = ({ visible, x, y }) => {
 
     //console.log(visible);
-    console.log(`x:${x} y:${y}`);
+    console.log(`menu x:${x} y:${y}`);
+
+    let wrapperStyle = {
+        display: visible ? 'block' : 'none',
+        top: `${y}px`,
+        left: `${x}px`,
+    };
 
     return (
         <div className={classes['mobile-navi-wrapper']}
-            style={{ 'display': visible ? 'block' : 'none' }}>
+            style={{ ...wrapperStyle }}>
             <div className={classes['navigation-wrapper']}>
                 <HorizontalNavi></HorizontalNavi>
             </div>

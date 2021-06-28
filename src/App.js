@@ -26,16 +26,17 @@ function App() {
     e.preventDefault();
     const rect = mainDiv.current.getBoundingClientRect();
 
-    //console.log(rect);
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    setX(e.clientX - rect.left);
-    setY(e.clientY - rect.top);
+    setX(x);
+    setY(y);
 
     setContextMenuVisible(!contextMenuVisible);
   };
 
   return (
-    <div onContextMenu={handleMobileNaviClick}>
+    <div onContextMenu={handleMobileNaviClick} className={classes['app-wrapper']}>
 
       <MobileNavi visible={contextMenuVisible} x={x} y={y}></MobileNavi>
 
