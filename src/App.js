@@ -12,23 +12,35 @@ import classes from './App.module.css';
 
 import MobileNavi from './reusableComponents/MobileNavi';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 function App() {
 
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+
+  const mainDiv = useRef();
 
   const handleMobileNaviClick = e => {
-    //console.log(e);
     e.preventDefault();
+    const rect = mainDiv.current.getBoundingClientRect();
+
+    //console.log(rect);
+
+    setX(e.clientX - rect.left);
+    setY(e.clientY - rect.top);
+
     setContextMenuVisible(!contextMenuVisible);
   };
 
   return (
     <div onContextMenu={handleMobileNaviClick}>
-      <MobileNavi visible={contextMenuVisible}></MobileNavi>
+
+      <MobileNavi visible={contextMenuVisible} x={x} y={y}></MobileNavi>
+
       <header className={classes['app-header']}><MainHeader></MainHeader></header>
-      <main className={classes['app-main']}>
+      <main className={classes['app-main']} ref={mainDiv}>
         <Switch>
           <Route exact path="/" >
             <Redirect to="login" />

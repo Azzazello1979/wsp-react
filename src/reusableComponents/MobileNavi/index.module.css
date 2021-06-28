@@ -1,4 +1,5 @@
 .mobile-navi-wrapper {
+    position: absolute;
     display: none;
 }
 

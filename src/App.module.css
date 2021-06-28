@@ -1,7 +1,9 @@
+
 .app-header {
     height: 15vh;
 }
 .app-main {
+    position: relative; /* needed for positioning contextMenu absolutely */
     min-height: 70vh;
 }
 .app-footer {
