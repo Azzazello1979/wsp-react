@@ -1,6 +1,6 @@
 button {
     background: cornflowerblue;
-    width: 100%;
+    width: 80%;
     cursor: pointer;
     transition: all 0.5s;
 }

@@ -19,14 +19,11 @@ function App() {
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-
   const mainDiv = useRef();
 
   const handleMobileNaviClick = e => {
     e.preventDefault();
     const rect = mainDiv.current.getBoundingClientRect();
-
-    console.log(`left - ${rect.left}, top - ${rect.top}`);
 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;

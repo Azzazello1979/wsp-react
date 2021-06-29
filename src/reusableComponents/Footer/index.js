@@ -6,7 +6,7 @@ const Footer = () => {
         <div className={classes['footer-wrapper']}>
             <div className="text-centered">React Webshop Project 2021 - all rights reserved</div>
             <div className={classes['navi-buttons']}>
-                <MainNavi></MainNavi>
+                <MainNavi buttonsWidth={'80%'}></MainNavi>
             </div>
         </div>
     );

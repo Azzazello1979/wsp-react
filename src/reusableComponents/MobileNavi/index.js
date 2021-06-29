@@ -17,7 +17,7 @@ const MobileNavi = ({ visible, x, y }) => {
         <div className={classes['mobile-navi-wrapper']}
             style={{ ...wrapperStyle }}>
             <div className={classes['navigation-wrapper']}>
-                <MainNavi></MainNavi>
+                <MainNavi buttonsWidth={'100%'}></MainNavi>
             </div>
         </div>
     );
