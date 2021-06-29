@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.navi-buttons {
+.footer-navi-buttons-wrapper {
     width: 80vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

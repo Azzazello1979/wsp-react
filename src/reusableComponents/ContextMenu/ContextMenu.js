@@ -1,5 +1,5 @@
-import classes from './index.module.css';
-import MainNavi from '../MainNavi';
+import classes from './ContextMenu.module.css';
+import MainNavi from '../MainNavi/MainNavi';
 import React from 'react';
 
 const ContextMenu = ({ visible, x, y }) => {

@@ -1,16 +1,16 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Login from './pageComponents/Login';
-import UserDash from './pageComponents/UserDash';
-import AdminDash from './pageComponents/AdminDash';
-import About from './pageComponents/About';
-import NotFound from './pageComponents/NotFound';
-import MainHeader from './reusableComponents/MainHeader';
+import Login from './pageComponents/Login/Login';
+import UserDash from './pageComponents/UserDash/UserDash';
+import AdminDash from './pageComponents/AdminDash/AdminDash';
+import About from './pageComponents/About/About';
+import NotFound from './pageComponents/NotFound/NotFound';
+import MainHeader from './reusableComponents/MainHeader/MainHeader';
 
-import Footer from './reusableComponents/Footer';
+import Footer from './reusableComponents/Footer/Footer';
 import classes from './App.module.css';
 
-import ContextMenu from './reusableComponents/ContextMenu';
+import ContextMenu from './reusableComponents/ContextMenu/ContextMenu';
 
 import { useState, useRef } from 'react';
 
@@ -22,7 +22,7 @@ function App() {
   const mainDiv = useRef();
 
   const handleMobileNaviClick = e => {
-    e.preventDefault();
+    //e.preventDefault();
     const rect = mainDiv.current.getBoundingClientRect();
 
     const x = e.clientX - rect.left;

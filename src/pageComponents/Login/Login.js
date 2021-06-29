@@ -1,5 +1,5 @@
-import classes from './index.module.css';
-import LoginRegisterForm from './../../reusableComponents/LoginRegisterForm';
+import classes from './Login.module.css';
+import LoginRegisterForm from '../../reusableComponents/LoginRegisterForm/LoginRegisterForm';
 
 const Login = () => {
     return (

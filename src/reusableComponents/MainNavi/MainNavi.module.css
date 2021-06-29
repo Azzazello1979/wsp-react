@@ -1,11 +1,11 @@
-button {
+.main-navi-anchor > * {
     background: cornflowerblue;
     width: 80%;
     cursor: pointer;
     transition: all 0.5s;
 }
 
-a.active > * {
+.main-navi-anchor.active > * {
     background: darkcyan;
     color: white;
     border-radius: 8px;

@@ -1,0 +1,35 @@
+.login-register-form-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80%;
+    width: 50%;
+}
+
+input, button {
+    padding: 5px;
+}
+
+.form-control-group {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+}
+
+.form-control-group input {
+    width: 50%;
+}
+
+
+
+

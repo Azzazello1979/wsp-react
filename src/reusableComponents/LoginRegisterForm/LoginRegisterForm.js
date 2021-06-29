@@ -1,4 +1,4 @@
-import classes from './index.module.css';
+import classes from './LoginRegisterForm.module.css';
 import { useState } from 'react';
 
 const LoginRegisterForm = () => {
@@ -25,13 +25,20 @@ const LoginRegisterForm = () => {
     return (
         <div className={classes['login-register-form-wrapper']}>
             <form onSubmit={submitHandler}>
-                <label htmlFor="email">email</label>
-                <input type="email" id="email" value={email} onChange={emailChangeHandler} />
 
-                <label htmlFor="password">password</label>
-                <input type="password" id="password" value={password} onChange={passwordChangeHandler} />
+                <div className={classes['form-control-group']}>
+                    <label htmlFor="email">email</label>
+                    <input type="email" id="email" value={email} onChange={emailChangeHandler} />
+                </div>
 
-                <button type="submit">Submit</button>
+                <div className={classes['form-control-group']}>
+                    <label htmlFor="password">password</label>
+                    <input type="password" id="password" value={password} onChange={passwordChangeHandler} />
+                </div>
+
+                <div className={classes['form-control-group']}>
+                    <button type="submit">Submit</button>
+                </div>
             </form>
         </div>
     );

@@ -1,4 +1,4 @@
-import classes from './index.module.css';
+import classes from './MainHeader.module.css';
 
 const MainHeader = () => {
     return (

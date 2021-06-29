@@ -2,13 +2,7 @@
     position: relative; /* needed for positioning contextMenu absolutely */
     width: 100vw;
     height: 100vh;
-}
-
-.app-header {
-    height: 15vh;
-}
-.app-main {
-}
-.app-footer {
-    height: 15vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
 }
