@@ -1,25 +1,33 @@
 import classes from './LoginRegisterForm.module.css';
-import { useState } from 'react';
+import useInput from './../../customHooks/use-input';
+import { emailValidatorFn, passwordValidatorFn } from './../../utils/validatorFunctions';
 
 const LoginRegisterForm = () => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const {
+        value: email,
+        hasError: emailHasError,
+        inputChangeHandler: emailChangeHandler,
+        inputBlurHandler: emailBlurHandler,
+        reset: resetEmail,
+    } = useInput(emailValidatorFn);
 
-    const emailChangeHandler = e => {
-        setEmail(e.target.value);
-    };
+    const {
+        value: password,
+        hasError: passwordHasError,
+        inputChangeHandler: passwordChangeHandler,
+        inputBlurHandler: passwordBlurHandler,
+        reset: resetPassword,
+    } = useInput(passwordValidatorFn);
 
-    const passwordChangeHandler = e => {
-        setPassword(e.target.value);
-    };
+    const formIsValid = !emailHasError && !passwordHasError;
 
     const submitHandler = e => {
         e.preventDefault();
-        console.log(`email - ${email}, password - ${password}`);
 
-        setEmail('');
-        setPassword('');
+        resetEmail();
+        resetPassword();
+
     };
 
     return (
@@ -28,16 +36,18 @@ const LoginRegisterForm = () => {
 
                 <div className={classes['form-control-group']}>
                     <label htmlFor="email">email</label>
-                    <input type="email" id="email" value={email} onChange={emailChangeHandler} />
+                    <input type="email" id="email" value={email} onChange={emailChangeHandler} onBlur={emailBlurHandler} />
+                    {emailHasError && <p>Email has error.</p>}
                 </div>
 
                 <div className={classes['form-control-group']}>
                     <label htmlFor="password">password</label>
-                    <input type="password" id="password" value={password} onChange={passwordChangeHandler} />
+                    <input type="password" id="password" value={password} onChange={passwordChangeHandler} onBlur={passwordBlurHandler} />
+                    {passwordHasError && <p>Password has error.</p>}
                 </div>
 
                 <div className={classes['form-control-group']}>
-                    <button type="submit">Submit</button>
+                    <button type="submit" disabled={!formIsValid} >Submit</button>
                 </div>
             </form>
         </div>
