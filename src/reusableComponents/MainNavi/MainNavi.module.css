@@ -5,8 +5,12 @@
     transition: all 0.5s;
 }
 
+.main-navi-anchor button:hover {
+    background: rgb(46, 93, 180);
+}
+
 .main-navi-anchor.active > * {
-    background: darkcyan;
+    background: rgb(46, 93, 180);
     color: white;
     border-radius: 8px;
 }
