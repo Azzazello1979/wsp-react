@@ -1,0 +1,12 @@
+.login-wrapper {
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.some {
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
+}

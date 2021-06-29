@@ -1,7 +1,10 @@
+import classes from './index.module.css';
+import LoginRegisterForm from './../../reusableComponents/LoginRegisterForm';
+
 const Login = () => {
     return (
-        <div>
-            <h2>Login</h2>
+        <div className={classes['login-wrapper']}>
+            <LoginRegisterForm></LoginRegisterForm>
         </div>
     );
 };
