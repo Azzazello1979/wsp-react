@@ -2,13 +2,11 @@ import classes from './index.module.css';
 import MainNavi from '../MainNavi';
 import React from 'react';
 
-const MobileNavi = ({ visible, x, y }) => {
-
-    //console.log(visible);
-    console.log(`menu x:${x} y:${y}`);
+const ContextMenu = ({ visible, x, y }) => {
 
     let wrapperStyle = {
-        display: visible ? 'block' : 'none',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'scale(100%)' : 'scale(0%)',
         top: `${y}px`,
         left: `${x}px`,
     };
@@ -23,4 +21,4 @@ const MobileNavi = ({ visible, x, y }) => {
     );
 };
 
-export default MobileNavi;
+export default ContextMenu;

@@ -5,10 +5,6 @@ button {
     transition: all 0.5s;
 }
 
-button:hover {
-    transform: translateY(-15%);
-}
-
 a.active > * {
     background: darkcyan;
     color: white;

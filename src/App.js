@@ -10,7 +10,7 @@ import MainHeader from './reusableComponents/MainHeader';
 import Footer from './reusableComponents/Footer';
 import classes from './App.module.css';
 
-import MobileNavi from './reusableComponents/MobileNavi';
+import ContextMenu from './reusableComponents/ContextMenu';
 
 import { useState, useRef } from 'react';
 
@@ -37,7 +37,7 @@ function App() {
   return (
     <div onContextMenu={handleMobileNaviClick} className={classes['app-wrapper']} ref={mainDiv}>
 
-      <MobileNavi visible={contextMenuVisible} x={x} y={y}></MobileNavi>
+      <ContextMenu visible={contextMenuVisible} x={x} y={y}></ContextMenu>
 
       <header className={classes['app-header']}><MainHeader></MainHeader></header>
       <main className={classes['app-main']}>

@@ -1,6 +1,6 @@
 .mobile-navi-wrapper {
     position: absolute;
-    display: none;
+    transition: opacity, transform 0.5s;
 }
 
 .navigation-wrapper {
