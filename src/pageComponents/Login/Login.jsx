@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Login = () => {
 
-    const userLoggedIn = useSelector(state => state.userLoggedIn);
+    const userLoggedIn = useSelector(state => state.authSlice.userLoggedIn);
 
     return (
         <div className={classes['login-wrapper']}>

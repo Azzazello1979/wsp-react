@@ -53,9 +53,11 @@ const productsSlice = createSlice({
 
 const store = configureStore({
     reducer: {
-        userAuth: authSlice.reducer,
+        authSlice: authSlice.reducer,
+        productsSlice: productsSlice.reducer,
     }
 });
 
 export const authActions = authSlice.actions;
+export const productActions = productsSlice.actions;
 export default store;

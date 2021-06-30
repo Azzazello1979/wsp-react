@@ -1,0 +1,9 @@
+1. even if using css.modules, 
+using an html element selector (like: button) in a css file,
+will bleed out that style property to all components!
+
+2. why Redux Toolkit?
+- you can write code that (seemingly) modifies the state directly, without cloning it 1st and modifyin the clone and returning the clone (of course its still cloned behind the scenes by Redux toolkit)
+- no need to worry about action types and constants for naming those action types... its done for you behind the scenes
+- no need for long and ugly switch statements... the Redux Toolkit finds the appropriate reducer for you.
+
