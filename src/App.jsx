@@ -17,7 +17,7 @@ import { useState, useRef } from 'react';
 import { DEV_API_BASE, PROD_API_BASE } from './constants/constants';
 
 import { useDispatch } from 'react-redux';
-import { userActions } from './store/index';
+import { userActions } from './store/usersSlice';
 
 function App() {
 

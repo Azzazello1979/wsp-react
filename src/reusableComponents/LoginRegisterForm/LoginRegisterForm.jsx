@@ -3,7 +3,7 @@ import useInput from '../../customHooks/use-input';
 import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
 import { DEV_API_BASE, PROD_API_BASE } from '../../constants/constants';
 import { useDispatch } from 'react-redux';
-import { authActions } from './../../store/index';
+import { authActions } from './../../store/authSlice';
 
 const LoginRegisterForm = () => {
 
