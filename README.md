@@ -5,6 +5,7 @@ created
 ------- 
 npx create-react-app
 npm i react-router-dom
+npm i typescript @types/node @types/react @types/react-dom @types/jest
 
 tools in this project:
 ----------------------
