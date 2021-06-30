@@ -14,7 +14,33 @@ import ContextMenu from './reusableComponents/ContextMenu/ContextMenu';
 
 import { useState, useRef } from 'react';
 
+import { DEV_API_BASE, PROD_API_BASE } from './constants/constants';
+
+import { useDispatch } from 'react-redux';
+import { userActions } from './store/index';
+
 function App() {
+
+  const dispatch = useDispatch();
+
+  // get all users
+  const getUsers = async () => {
+    fetch(`${DEV_API_BASE}/users`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(async (response) => await response.json())
+      .then(data => {
+        console.log('users hereeee...', data);
+        dispatch(userActions.setAllUsers(data));
+      })
+      .catch(err => alert(err.message))
+  };
+
+
+  getUsers();
+
 
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [x, setX] = useState(0);
