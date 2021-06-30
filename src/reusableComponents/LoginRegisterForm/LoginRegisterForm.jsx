@@ -2,8 +2,19 @@ import classes from './LoginRegisterForm.module.css';
 import useInput from '../../customHooks/use-input';
 import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
 import { apiBase, localApi } from '../../constants/constants';
+import { useSelector, useDispatch } from 'react-redux';
 
 const LoginRegisterForm = () => {
+
+    const setUserLoggedIn = useDispatch();
+
+    const loginHandler = () => {
+        setUserLoggedIn({ type: 'LOGIN' });
+    };
+
+    const logoutHandler = () => {
+        setUserLoggedIn({ type: 'LOGOUT' });
+    };
 
     const {
         value: email,
@@ -40,7 +51,10 @@ const LoginRegisterForm = () => {
             body: JSON.stringify(userObj)
         })
             .then(async (response) => await response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                loginHandler();
+            })
             .catch(err => alert(err.message));
 
         resetEmail();
@@ -68,6 +82,10 @@ const LoginRegisterForm = () => {
                     <button type="submit" disabled={!formIsValid} >Submit</button>
                 </div>
             </form>
+
+            <button onClick={loginHandler}>LOGIN</button>
+            <button onClick={logoutHandler}>LOGOUT</button>
+
         </div>
     );
 };

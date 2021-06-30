@@ -7,6 +7,9 @@ npx create-react-app
 npm i ... 
 
 react-router-dom
+redux
+react-redux
+
 
 tools in this project:
 ----------------------
@@ -20,7 +23,7 @@ tools in this project:
 * React Hooks
 * Custom Hooks    
 
-* Jest (testing)
+* jest-dom (testing)
 * material UI (component library)
 
 * CSS transitions
