@@ -4,8 +4,9 @@ React Frontend for Webshop Project
 created
 ------- 
 npx create-react-app
-npm i react-router-dom
-npm i typescript @types/node @types/react @types/react-dom @types/jest
+npm i ... 
+
+react-router-dom
 
 tools in this project:
 ----------------------
@@ -20,7 +21,6 @@ tools in this project:
 * Custom Hooks    
 
 * Jest (testing)
-* Types (TypeScript)
 * material UI (component library)
 
 * CSS transitions
@@ -30,10 +30,3 @@ tools in this project:
 * CSS Flexbox
 * media queries
 * mobile 1st responsive design
-
-
-features:
----------
-1. color scheme selector
-2. authentication & authorization & route guards
-3. floating navigation (right mouse click)

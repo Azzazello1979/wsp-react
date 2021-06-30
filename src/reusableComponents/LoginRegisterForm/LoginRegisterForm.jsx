@@ -1,7 +1,7 @@
 import classes from './LoginRegisterForm.module.css';
-import useInput from './../../customHooks/use-input';
-import { emailValidatorFn, passwordValidatorFn } from './../../utils/validatorFunctions';
-import { apiBase, localApi } from './../../constants/constants';
+import useInput from '../../customHooks/use-input';
+import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
+import { apiBase, localApi } from '../../constants/constants';
 
 const LoginRegisterForm = () => {
 

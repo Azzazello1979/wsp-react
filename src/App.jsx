@@ -19,14 +19,14 @@ function App() {
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  const mainDiv = useRef();
+  const appWrapperRef = useRef();
 
-  const handleMobileNaviClick = e => {
+  const handleMobileNaviClick = (e) => {
     //e.preventDefault();
-    const rect = mainDiv.current.getBoundingClientRect();
+    const rect = appWrapperRef.current.getBoundingClientRect();
 
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.clientX - rect.x;
+    const y = e.clientY - rect.y;
 
     setX(x);
     setY(y);
@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div onContextMenu={handleMobileNaviClick} className={classes['app-wrapper']} ref={mainDiv}>
+    <div onContextMenu={handleMobileNaviClick} className={classes['app-wrapper']} ref={appWrapperRef}>
 
       <ContextMenu visible={contextMenuVisible} x={x} y={y}></ContextMenu>
 
