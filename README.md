@@ -7,16 +7,15 @@ npx create-react-app
 npm i ... 
 
 react-router-dom
-redux
+@reactjs/toolkit (redux included)
 react-redux
-
 
 tools in this project:
 ----------------------
 * React router
 * fetch API
 * CSS modules (included in create-react-app)
-* Redux, Redux toolkit
+* Redux ---> Redux toolkit
 * Redux Thunk
 
 * React animations

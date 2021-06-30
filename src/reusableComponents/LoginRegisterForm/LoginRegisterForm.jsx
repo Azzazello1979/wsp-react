@@ -2,18 +2,20 @@ import classes from './LoginRegisterForm.module.css';
 import useInput from '../../customHooks/use-input';
 import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
 import { apiBase, localApi } from '../../constants/constants';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { authActions } from './../../store/index';
 
 const LoginRegisterForm = () => {
 
     const setUserLoggedIn = useDispatch();
 
     const loginHandler = () => {
-        setUserLoggedIn({ type: 'LOGIN' });
+        setUserLoggedIn(authActions.login());
+        //setUserLoggedIn(authActions.save(payload)); // { type: some_uniq_ID_you_dont_have_to_worry_about, payload?: any }
     };
 
     const logoutHandler = () => {
-        setUserLoggedIn({ type: 'LOGOUT' });
+        setUserLoggedIn(authActions.logout());
     };
 
     const {
