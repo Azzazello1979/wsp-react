@@ -1,2 +1,2 @@
-export const apiBase = 'https://wsp-api1979.herokuapp.com';
-export const localApi = 'http://localhost:7171';
+export const PROD_API_BASE = 'https://wsp-api1979.herokuapp.com';
+export const DEV_API_BASE = 'http://localhost:7171';

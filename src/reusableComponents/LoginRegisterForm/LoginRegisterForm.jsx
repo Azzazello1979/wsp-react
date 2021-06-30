@@ -1,7 +1,7 @@
 import classes from './LoginRegisterForm.module.css';
 import useInput from '../../customHooks/use-input';
 import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
-import { apiBase, localApi } from '../../constants/constants';
+import { DEV_API_BASE, PROD_API_BASE } from '../../constants/constants';
 import { useDispatch } from 'react-redux';
 import { authActions } from './../../store/index';
 
@@ -45,7 +45,7 @@ const LoginRegisterForm = () => {
             password,
         };
 
-        fetch(`${localApi}/users`, {
+        fetch(`${DEV_API_BASE}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
