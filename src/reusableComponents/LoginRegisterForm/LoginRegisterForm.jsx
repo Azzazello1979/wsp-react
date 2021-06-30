@@ -7,15 +7,15 @@ import { authActions } from './../../store/index';
 
 const LoginRegisterForm = () => {
 
-    const setUserLoggedIn = useDispatch();
+    const dispatch = useDispatch();
 
     const loginHandler = () => {
-        setUserLoggedIn(authActions.login());
-        //setUserLoggedIn(authActions.save(payload)); // { type: some_uniq_ID_you_dont_have_to_worry_about, payload?: any }
+        dispatch(authActions.login());
+        //dispatch(authActions.save(payload)); // { type: some_uniq_ID_you_dont_have_to_worry_about, payload?: any }
     };
 
     const logoutHandler = () => {
-        setUserLoggedIn(authActions.logout());
+        dispatch(authActions.logout());
     };
 
     const {

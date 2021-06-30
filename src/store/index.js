@@ -17,6 +17,24 @@ const authSlice = createSlice({
     }
 });
 
+// USERS
+const usersInitialState = {
+    users: [
+        { id: 1, name: 'Baligno' },
+        { id: 2, name: 'Babino' },
+        { id: 3, name: 'Mazdino' },
+    ]
+};
+const usersSlice = createSlice({
+    name: 'usersSlice',
+    initialState: usersInitialState,
+    reducers: {
+        addUser(state, action) { // action.payload --> {...}
+            state.users.push(action.payload);
+        }
+    }
+});
+
 
 // PRODUCTS...
 const productsInitialState = {
@@ -55,6 +73,7 @@ const store = configureStore({
     reducer: {
         authSlice: authSlice.reducer,
         productsSlice: productsSlice.reducer,
+        usersSlice: usersSlice.reducer,
     }
 });
 
