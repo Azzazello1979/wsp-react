@@ -2,10 +2,7 @@ import classes from './LoginRegisterForm.module.css';
 import useInput from '../../customHooks/use-input';
 import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
 import { useDispatch } from 'react-redux';
-import { authActionCreators } from './../../store/authSlice';
-
-//import { registerThunk } from './../../store/authSlice';
-import { authThunkCreators } from './../../store/authSlice';
+import { authActionCreators, authThunkCreators } from './../../store/authSlice';
 
 const LoginRegisterForm = () => {
 
@@ -39,7 +36,6 @@ const LoginRegisterForm = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        //dispatch(registerThunk({ email, password }));
         dispatch(authThunkCreators.register({ email, password }));
         resetEmail();
         resetPassword();
