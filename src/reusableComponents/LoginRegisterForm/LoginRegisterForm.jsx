@@ -1,21 +1,22 @@
 import classes from './LoginRegisterForm.module.css';
 import useInput from '../../customHooks/use-input';
 import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
-import { DEV_API_BASE, PROD_API_BASE } from '../../constants/constants';
 import { useDispatch } from 'react-redux';
-import { authActions } from './../../store/authSlice';
+import { authActionCreators } from './../../store/authSlice';
+
+//import { registerThunk } from './../../store/authSlice';
+import { authThunkCreators } from './../../store/authSlice';
 
 const LoginRegisterForm = () => {
 
     const dispatch = useDispatch();
 
     const loginHandler = () => {
-        dispatch(authActions.login());
-        //dispatch(authActions.save(payload)); // { type: some_uniq_ID_you_dont_have_to_worry_about, payload?: any }
+        dispatch(authActionCreators.login());
     };
 
     const logoutHandler = () => {
-        dispatch(authActions.logout());
+        dispatch(authActionCreators.logout());
     };
 
     const {
@@ -36,32 +37,12 @@ const LoginRegisterForm = () => {
 
     const formIsValid = !emailHasError && !passwordHasError;
 
-    const submitHandler = async (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
-
-        const userObj = {
-            action: 'register',
-            email,
-            password,
-        };
-
-        fetch(`${DEV_API_BASE}/users`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userObj)
-        })
-            .then(async (response) => await response.json())
-            .then(data => {
-                console.log(data);
-                loginHandler();
-            })
-            .catch(err => alert(err.message));
-
+        //dispatch(registerThunk({ email, password }));
+        dispatch(authThunkCreators.register({ email, password }));
         resetEmail();
         resetPassword();
-
     };
 
     return (
