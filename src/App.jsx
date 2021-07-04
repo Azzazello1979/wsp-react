@@ -18,30 +18,27 @@ import { DEV_API_BASE, PROD_API_BASE } from './constants/constants';
 
 import { useDispatch } from 'react-redux';
 import { userActions } from './store/usersSlice';
+import axios from 'axios';
 
 function App() {
 
   const dispatch = useDispatch();
 
   // get all users
-  const getUsers = async () => {
-    fetch(`${DEV_API_BASE}/users`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-      .then(async (response) => await response.json())
-      .then(data => {
-        console.log('users hereeee...', data);
-        dispatch(userActions.setAllUsers(data));
-      })
-      .catch(err => alert(err.message))
-  };
+  const getUsers = () => {
+    axios.get(`${DEV_API_BASE}/users`)
+      .then(response => {
+        console.log(response);
+        dispatch(userActions.setAllUsers(response.data));
 
+      })
+      .catch(err => alert(err))
+  };
 
   getUsers();
 
 
+  // Context Menu ...
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -71,7 +68,7 @@ function App() {
           <Route exact path="/" >
             <Redirect to="login" />
           </Route>
-          <Route path="/login" >
+          <Route path="/login" > {/* <--- handles registration too */}
             <Login></Login>
           </Route>
           <Route path="/dashboard" >
