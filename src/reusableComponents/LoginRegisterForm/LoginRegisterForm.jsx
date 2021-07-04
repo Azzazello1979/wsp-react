@@ -1,14 +1,18 @@
 import classes from './LoginRegisterForm.module.css';
 import useInput from '../../customHooks/use-input';
+import { useState } from 'react';
 import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunctions';
 import { useDispatch } from 'react-redux';
-import { authActionCreators, authThunkCreators } from './../../store/authSlice';
+import { authThunkCreators } from './../../store/authSlice';
 
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
 import TextField from '@material-ui/core/TextField';
 
 const LoginRegisterForm = () => {
+
+    const [isLoginMode, setIsLoginMode] = useState(true);
 
     const dispatch = useDispatch();
 
@@ -32,10 +36,17 @@ const LoginRegisterForm = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+
+        // register OR login, based on isLoginMode
+
         dispatch(authThunkCreators.register({ email, password }));
         resetEmail();
         resetPassword();
     };
+
+    const switchLinkHandler = () => {
+        setIsLoginMode(!isLoginMode);
+    }
 
     return (
         <div className={classes['login-register-form-wrapper']}>
@@ -56,10 +67,12 @@ const LoginRegisterForm = () => {
                         variant="contained"
                         size="medium"
                         color="primary"
-                        startIcon={<SaveIcon />}
-                    >Register</Button>
+                        startIcon={isLoginMode ? <LockOpenIcon /> : <SaveIcon />}
+                    >{isLoginMode ? 'Login' : 'Register'}</Button>
                 </div>
+                {isLoginMode ? <p onClick={switchLinkHandler} >No account yet? Go to register page!</p> : <p onClick={switchLinkHandler}>Already registered? Go to login page!</p>}
             </form>
+
 
         </div>
     );

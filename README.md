@@ -11,7 +11,7 @@ react-router-dom
 react-redux
 axios
 @material-ui/core
-@material-ui/icons (svg icons)
+@material-ui/icons (svg icons) <--- icons are imported as components!
 
 tools in this project:
 ----------------------
