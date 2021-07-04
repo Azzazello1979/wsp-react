@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { DEV_API_BASE } from './../constants/constants';
+import axios from 'axios';
+
 
 // AUTH...
 const authInitialState = {
@@ -26,33 +28,23 @@ const authSlice = createSlice({
 
 // this is a thunk...
 const register = ({ email, password }) => {
-    return async (dispatch) => {
+    return (dispatch) => {
 
         //update redux
         dispatch(authActionCreators.register(email));
         //update redux
 
-        const saveUser = async () => {
+        const saveUser = () => {
             const userObj = {
                 action: 'register',
                 email,
                 password,
             };
 
-            fetch(`${DEV_API_BASE}/users`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userObj)
-            })
-                .then(async (response) => await response.json())
-                .then(data => {
-                    console.log(data);
+            axios.post(`${DEV_API_BASE}/users`, userObj)
+                .then(response => console.log(response))
+                .catch(err => alert(err))
 
-
-                })
-                .catch(err => alert(err.message));
         };
 
         try {

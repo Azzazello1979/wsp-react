@@ -9,11 +9,12 @@ npm i ...
 react-router-dom
 @reactjs/toolkit (redux included)
 react-redux
+axios
 
 tools in this project:
 ----------------------
 * React router
-* fetch API
+* axios
 * CSS modules (included in create-react-app)
 * Redux ---> Redux toolkit
 * Redux Thunk
