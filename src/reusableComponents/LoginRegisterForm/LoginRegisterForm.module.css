@@ -15,21 +15,9 @@ form {
     width: 50%;
 }
 
-input, button {
-    padding: 5px;
-}
-
 .form-control-group {
     display: flex;
     flex-direction: column; 
     align-items: center;
     width: 100%;
 }
-
-.form-control-group input {
-    width: 50%;
-}
-
-
-
-
