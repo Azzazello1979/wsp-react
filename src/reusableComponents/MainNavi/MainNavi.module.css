@@ -1,16 +1,13 @@
 .main-navi-anchor > * {
-    background: cornflowerblue;
     width: 80%;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.main-navi-anchor button:hover {
-    background: rgb(46, 93, 180);
 }
 
 .main-navi-anchor.active > * {
-    background: rgb(46, 93, 180);
+    background: rgb(6, 28, 70);
     color: white;
-    border-radius: 8px;
+    border-radius: 16px;
+}
+
+a {
+    text-decoration: none;
 }

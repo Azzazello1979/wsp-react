@@ -4,6 +4,9 @@ import { emailValidatorFn, passwordValidatorFn } from '../../utils/validatorFunc
 import { useDispatch } from 'react-redux';
 import { authActionCreators, authThunkCreators } from './../../store/authSlice';
 
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+
 const LoginRegisterForm = () => {
 
     const dispatch = useDispatch();
@@ -58,12 +61,16 @@ const LoginRegisterForm = () => {
                 </div>
 
                 <div className={classes['form-control-group']}>
-                    <button type="submit" disabled={!formIsValid} >Submit</button>
+                    <Button
+                        type="submit"
+                        disabled={!formIsValid}
+                        variant="contained"
+                        size="medium"
+                        color="primary"
+                        startIcon={<SaveIcon />}
+                    >Register</Button>
                 </div>
             </form>
-
-            <button onClick={loginHandler}>LOGIN</button>
-            <button onClick={logoutHandler}>LOGOUT</button>
 
         </div>
     );

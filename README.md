@@ -10,6 +10,8 @@ react-router-dom
 @reactjs/toolkit (redux included)
 react-redux
 axios
+@material-ui/core
+@material-ui/icons (svg icons)
 
 tools in this project:
 ----------------------
