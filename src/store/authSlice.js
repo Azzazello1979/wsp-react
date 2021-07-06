@@ -36,21 +36,20 @@ const register = ({ email, password }) => {
 
         const saveUser = () => {
             const userObj = {
-                action: 'register',
                 email,
                 password,
             };
 
-            axios.post(`${DEV_API_BASE}/users`, userObj)
+            axios.post(`${DEV_API_BASE}/users/register`, userObj)
                 .then(response => console.log(response))
-                .catch(err => alert(err))
+                .catch(err => console.log(err.message))
 
         };
 
         try {
             saveUser();
         } catch (err) {
-            alert(err);
+            console.log(err.message);
         }
 
     };

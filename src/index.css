@@ -10,7 +10,6 @@ body {
 }
 
 * {
-  box-sizing: border-box; /* margin, border, padding won't count */
   margin: 0;
 }
 

@@ -1,5 +1,5 @@
 .footer-wrapper {
-    height: 100%;
+    height: 20vh;
     border: 1px solid blue;
     display: flex;
     flex-direction: column;
