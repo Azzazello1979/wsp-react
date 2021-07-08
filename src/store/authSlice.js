@@ -8,6 +8,7 @@ import { axiosErrorHandler } from './../utils/axiosErrorHandler';
 const authInitialState = {
     userLoggedIn: !!localStorage.getItem('WSP-token'),
     userEmail: null,
+    axiosErrorCode: null,
 };
 const authSlice = createSlice({
     name: 'authSlice',
@@ -26,6 +27,9 @@ const authSlice = createSlice({
             state.userLoggedIn = false;
             state.userEmail = null;
         },
+        setError(state, action) {
+            state.axiosErrorCode = action.payload;
+        }
     }
 });
 
@@ -47,7 +51,10 @@ const register = ({ email, password }) => {
                 dispatch(authActionCreators.register(email));
 
             })
-            .catch(err => axiosErrorHandler(err))
+            .catch(err => {
+                const errorCode = axiosErrorHandler(err);
+                dispatch(authActionCreators.setError(errorCode));
+            })
 
     };
 };
@@ -70,7 +77,10 @@ const login = ({ email, password }) => {
                 dispatch(authActionCreators.login(email));
 
             })
-            .catch(err => axiosErrorHandler(err))
+            .catch(err => {
+                const errorCode = axiosErrorHandler(err);
+                dispatch(authActionCreators.setError(errorCode));
+            })
 
     };
 };
