@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { DEV_API_BASE } from './../constants/constants';
 import axios from 'axios';
+import { axiosErrorHandler } from './../utils/axiosErrorHandler';
 
 
 // AUTH...
@@ -22,6 +23,7 @@ const authSlice = createSlice({
         },
         logout(state) {
             localStorage.removeItem('WSP-token');
+            state.userLoggedIn = false;
             state.userEmail = null;
         },
     }
@@ -41,11 +43,11 @@ const register = ({ email, password }) => {
             .then(response => {
                 console.log(response);
                 //update redux
-                localStorage.setItem('WSP-token', response.token);
+                localStorage.setItem('WSP-token', response.data);
                 dispatch(authActionCreators.register(email));
 
             })
-            .catch(err => console.log(err.message))
+            .catch(err => axiosErrorHandler(err))
 
     };
 };
@@ -64,11 +66,11 @@ const login = ({ email, password }) => {
             .then(response => {
                 console.log(response);
                 //update redux
-                localStorage.setItem('WSP-token', response.token);
+                localStorage.setItem('WSP-token', response.data);
                 dispatch(authActionCreators.login(email));
 
             })
-            .catch(err => console.log(err.message))
+            .catch(err => axiosErrorHandler(err))
 
     };
 };
