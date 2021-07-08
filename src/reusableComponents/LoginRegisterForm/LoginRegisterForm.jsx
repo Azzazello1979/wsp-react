@@ -38,8 +38,12 @@ const LoginRegisterForm = () => {
         e.preventDefault();
 
         // register OR login, based on isLoginMode
+        if (isLoginMode) {
+            dispatch(authThunkCreators.login({ email, password }));
+        } else {
+            dispatch(authThunkCreators.register({ email, password }));
+        }
 
-        dispatch(authThunkCreators.register({ email, password }));
         resetEmail();
         resetPassword();
     };
