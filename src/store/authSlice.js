@@ -6,7 +6,7 @@ import { axiosErrorHandler } from './../utils/axiosErrorHandler';
 
 // AUTH...
 const authInitialState = {
-    userLoggedIn: false,
+    userLoggedIn: !!localStorage.getItem('WSP-token'),
     userEmail: null,
 };
 const authSlice = createSlice({

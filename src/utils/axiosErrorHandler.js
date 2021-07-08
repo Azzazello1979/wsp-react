@@ -11,3 +11,5 @@ export const axiosErrorHandler = (error) => {
     }
 
 };
+
+// open modal and feed in error info

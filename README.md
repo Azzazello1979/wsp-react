@@ -12,6 +12,7 @@ react-redux
 axios
 @material-ui/core
 @material-ui/icons (svg icons) <--- icons are imported as components!
+@material-ui/lab
 
 tools in this project:
 ----------------------

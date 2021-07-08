@@ -6,6 +6,7 @@ import AdminDash from './pageComponents/AdminDash/AdminDash';
 import About from './pageComponents/About/About';
 import NotFound from './pageComponents/NotFound/NotFound';
 import MainHeader from './reusableComponents/MainHeader/MainHeader';
+import SnackBarBaby from './reusableComponents/SnackBarBaby/SnackBarBaby';
 
 import Footer from './reusableComponents/Footer/Footer';
 import classes from './App.module.css';
@@ -18,6 +19,9 @@ import { DEV_API_BASE, PROD_API_BASE } from './constants/constants';
 
 import { useDispatch } from 'react-redux';
 import { userActions } from './store/usersSlice';
+
+import { uiActionCreators } from './store/uiSlice';
+
 import axios from 'axios';
 
 function App() {
@@ -28,7 +32,7 @@ function App() {
   const getUsers = () => {
     axios.get(`${DEV_API_BASE}/users`)
       .then(response => {
-        console.log(response);
+        //console.log(response);
         dispatch(userActions.setAllUsers(response.data));
 
       })
@@ -43,6 +47,10 @@ function App() {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const appWrapperRef = useRef();
+
+  const handleHeaderClick = () => {
+    dispatch(uiActionCreators.snackbarToggle());
+  };
 
   const handleMobileNaviClick = (e) => {
     //e.preventDefault();
@@ -60,10 +68,12 @@ function App() {
   return (
     <div onContextMenu={handleMobileNaviClick} className={classes['app-wrapper']} ref={appWrapperRef}>
 
+      <SnackBarBaby></SnackBarBaby>
       <ContextMenu visible={contextMenuVisible} x={x} y={y}></ContextMenu>
 
-      <header className={classes['app-header']}><MainHeader></MainHeader></header>
+      <header onClick={handleHeaderClick} className={classes['app-header']}><MainHeader></MainHeader></header>
       <main className={classes['app-main']}>
+
         <Switch>
           <Route exact path="/" >
             <Redirect to="login" />

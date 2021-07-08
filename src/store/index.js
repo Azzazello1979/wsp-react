@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import authSliceReducer from './authSlice';
 import productsSliceReducer from './authSlice';
 import usersSliceReducer from './usersSlice';
+import uiSliceReducer from './uiSlice';
 
 
 const store = configureStore({
@@ -10,6 +11,7 @@ const store = configureStore({
         authSlice: authSliceReducer,
         productsSlice: productsSliceReducer,
         usersSlice: usersSliceReducer,
+        uiSlice: uiSliceReducer,
     }
 });
 
