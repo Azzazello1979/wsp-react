@@ -3,7 +3,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import classes from './SnackBarBaby.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActionCreators } from './../../store/uiSlice';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -11,14 +11,15 @@ function Alert(props) {
 
 const SnackBarBaby = () => {
     const dispatch = useDispatch();
-
-    const snackbarOpen = useSelector(state => state.uiSlice.snackbarOpen);
     const currentAxiosError = useSelector(state => state.authSlice.axiosErrorCode);
+    const snackbarOpen = useSelector(state => state.uiSlice.snackbarOpen);
 
-    const [alertText, setAlertText] = useState('');
-    const [alertSeverity, setAlertSeverity] = useState('');
+    const [alertText, setAlertText] = useState('yolo');
+    const [alertSeverity, setAlertSeverity] = useState('success');
 
-    const mapper = () => {
+    useEffect(() => {
+
+        console.log('mapper runs');
         // map axios error code to props
         if (currentAxiosError === 'EMAIL_TAKEN') {
             setAlertText('This email is already taken, please choose another one.');
@@ -32,11 +33,11 @@ const SnackBarBaby = () => {
             setAlertText('We have no such email on file. Did you forget your email?');
             setAlertSeverity('error');
 
+        } else {
+            return;
         }
-    };
 
-    mapper();
-
+    }, [currentAxiosError]);
 
     const handleClose = () => {
         dispatch(uiActionCreators.snackbarClose());
