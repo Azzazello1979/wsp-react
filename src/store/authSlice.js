@@ -2,13 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import { DEV_API_BASE } from './../constants/constants';
 import axios from 'axios';
 import { axiosErrorHandler } from './../utils/axiosErrorHandler';
+import { AXIOS_STATE } from './../constants/constants';
 
 
 // AUTH...
 const authInitialState = {
     userLoggedIn: !!localStorage.getItem('WSP-token'),
     userEmail: null,
-    axiosErrorCode: null,
+    axiosCode: null,
 };
 const authSlice = createSlice({
     name: 'authSlice',
@@ -17,18 +18,21 @@ const authSlice = createSlice({
         register(state, action) {
             state.userLoggedIn = !!localStorage.getItem('WSP-token');
             state.userEmail = action.payload;
+            state.axiosCode = AXIOS_STATE.NEWLY_REGISTERED;
         },
         login(state, action) {
             state.userLoggedIn = !!localStorage.getItem('WSP-token');
             state.userEmail = action.payload;
+            state.axiosCode = AXIOS_STATE.LOGGED_IN;
         },
         logout(state) {
             localStorage.removeItem('WSP-token');
             state.userLoggedIn = false;
             state.userEmail = null;
+            state.axiosCode = AXIOS_STATE.LOGGED_OUT;
         },
         setError(state, action) {
-            state.axiosErrorCode = action.payload;
+            state.axiosCode = action.payload;
         }
     }
 });

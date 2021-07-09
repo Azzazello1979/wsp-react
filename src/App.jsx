@@ -13,7 +13,7 @@ import classes from './App.module.css';
 
 import ContextMenu from './reusableComponents/ContextMenu/ContextMenu';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { DEV_API_BASE, PROD_API_BASE } from './constants/constants';
 
@@ -28,18 +28,25 @@ function App() {
 
   const dispatch = useDispatch();
 
-  // get all users
-  const getUsers = () => {
-    axios.get(`${DEV_API_BASE}/users`)
-      .then(response => {
-        //console.log(response);
-        dispatch(userActions.setAllUsers(response.data));
+  useEffect(() => {
+    // get all users
+    const getUsers = () => {
+      axios.get(`${DEV_API_BASE}/users`)
+        .then(response => {
+          //console.log(response);
+          dispatch(userActions.setAllUsers(response.data));
+        })
+        .catch(err => alert(err))
+    };
+    getUsers();
 
-      })
-      .catch(err => alert(err))
+  }, [dispatch]);
+
+
+  // snackbar toggle
+  const handleHeaderClick = () => {
+    dispatch(uiActionCreators.snackbarToggle());
   };
-
-  getUsers();
 
 
   // Context Menu ...
@@ -47,10 +54,6 @@ function App() {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const appWrapperRef = useRef();
-
-  const handleHeaderClick = () => {
-    dispatch(uiActionCreators.snackbarToggle());
-  };
 
   const handleMobileNaviClick = (e) => {
     //e.preventDefault();
