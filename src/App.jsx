@@ -19,6 +19,7 @@ import { DEV_API_BASE, PROD_API_BASE } from './constants/constants';
 
 import { useDispatch } from 'react-redux';
 import { userActions } from './store/usersSlice';
+import { productActions } from './store/productsSlice';
 
 import { uiActionCreators } from './store/uiSlice';
 
@@ -29,7 +30,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // get all users
+    ///////////////////////////////////// get all users
     const getUsers = () => {
       axios.get(`${DEV_API_BASE}/users`)
         .then(response => {
@@ -40,7 +41,18 @@ function App() {
     };
     getUsers();
 
-  }, [dispatch]);
+    ///////////////////////////////////// get all products
+    const getProducts = () => {
+      axios.get(`${DEV_API_BASE}/products`)
+        .then(response => {
+          //console.log(response);
+          dispatch(productActions.setAllProducts(response.data));
+        })
+        .catch(err => alert(err))
+    };
+    getProducts();
+
+  }, []);
 
 
   // snackbar toggle

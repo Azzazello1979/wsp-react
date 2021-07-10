@@ -29,7 +29,10 @@ const productsSlice = createSlice({
 
             state.products.splice(index, 1, theProductObj); // splice modifies the target inline!
 
-        }
+        },
+        setAllProducts(state, action) {
+            state.products = action.payload;
+        },
     }
 });
 

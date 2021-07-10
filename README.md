@@ -13,6 +13,7 @@ axios
 @material-ui/core
 @material-ui/icons (svg icons) <--- icons are imported as components!
 @material-ui/lab
+@material-ui/styles
 
 tools in this project:
 ----------------------
