@@ -74,7 +74,7 @@ const LoginRegisterForm = () => {
                         startIcon={isLoginMode ? <LockOpenIcon /> : <SaveIcon />}
                     >{isLoginMode ? 'Login' : 'Register'}</Button>
                 </div>
-                {isLoginMode ? <p onClick={switchLinkHandler} >No account yet? Go to register page!</p> : <p onClick={switchLinkHandler}>Already registered? Go to login page!</p>}
+                {isLoginMode ? <p onClick={switchLinkHandler} >No account yet? Click to go to register page!</p> : <p onClick={switchLinkHandler}>Already registered? Click to go to login page!</p>}
             </form>
 
 

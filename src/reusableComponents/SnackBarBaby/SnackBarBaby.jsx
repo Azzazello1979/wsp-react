@@ -27,38 +27,42 @@ const SnackBarBaby = () => {
         // map axios code to props
         console.log('mapper runs');
 
-        // open snackbar
-        dispatch(uiActionCreators.snackbarOpen());
+        if (currentAxiosCode) {
 
-        if (currentAxiosCode === 'EMAIL_TAKEN') {
-            setAlertText('This email is already taken, please choose another one.');
-            setAlertSeverity('error');
+            // open snackbar
+            dispatch(uiActionCreators.snackbarOpen());
 
-        } else if (currentAxiosCode === 'PASSWORD_MISMATCH') {
-            setAlertText('The password you entered does not match with the one we have on file for this user.');
-            setAlertSeverity('error');
+            if (currentAxiosCode === 'EMAIL_TAKEN') {
+                setAlertText('This email is already taken, please choose another one.');
+                setAlertSeverity('error');
 
-        } else if (currentAxiosCode === 'NO_SUCH_EMAIL') {
-            setAlertText('We have no such email on file. Did you forget your email?');
-            setAlertSeverity('error');
+            } else if (currentAxiosCode === 'PASSWORD_MISMATCH') {
+                setAlertText('The password you entered does not match with the one we have on file for this user.');
+                setAlertSeverity('error');
 
-        } else if (currentAxiosCode === 'NEWLY_REGISTERED') {
-            setAlertText(`Welcome ${userEmail}`);
-            setAlertSeverity('success');
-            history.replace('/dashboard');
+            } else if (currentAxiosCode === 'NO_SUCH_EMAIL') {
+                setAlertText('We have no such email on file. Did you forget your email?');
+                setAlertSeverity('error');
 
-        } else if (currentAxiosCode === 'LOGGED_IN') {
-            setAlertText(`Welcome back ${userEmail}`);
-            setAlertSeverity('success');
-            history.replace('/dashboard');
+            } else if (currentAxiosCode === 'NEWLY_REGISTERED') {
+                setAlertText(`Welcome ${userEmail}`);
+                setAlertSeverity('success');
+                history.replace('/dashboard');
 
-        } else if (currentAxiosCode === 'LOGGED_OUT') {
-            setAlertText('See you soon!');
-            setAlertSeverity('info');
-            history.replace('/login');
+            } else if (currentAxiosCode === 'LOGGED_IN') {
+                setAlertText(`Welcome back ${userEmail}`);
+                setAlertSeverity('success');
+                history.replace('/dashboard');
 
-        } else {
-            return;
+            } else if (currentAxiosCode === 'LOGGED_OUT') {
+                setAlertText('See you soon!');
+                setAlertSeverity('info');
+                history.replace('/login');
+
+            } else {
+                return;
+            }
+
         }
 
 

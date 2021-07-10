@@ -1,7 +1,10 @@
+import UtilityBar from "../../reusableComponents/UtilityBar/UtilityBar";
+import classes from './UserDash.module.css';
+
 const UserDash = () => {
     return (
-        <div>
-            <h2>User dashboard</h2>
+        <div className={classes['user-dash-wrapper']} >
+            <UtilityBar></UtilityBar>
         </div>
     );
 };
