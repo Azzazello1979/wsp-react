@@ -55,12 +55,6 @@ function App() {
   }, []);
 
 
-  // snackbar toggle
-  const handleHeaderClick = () => {
-    dispatch(uiActionCreators.snackbarToggle());
-  };
-
-
   // Context Menu ...
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
   const [x, setX] = useState(0);
@@ -86,7 +80,7 @@ function App() {
       <SnackBarBaby></SnackBarBaby>
       <ContextMenu visible={contextMenuVisible} x={x} y={y}></ContextMenu>
 
-      <header onClick={handleHeaderClick} className={classes['app-header']}><MainHeader></MainHeader></header>
+      <header className={classes['app-header']}><MainHeader></MainHeader></header>
       <main className={classes['app-main']}>
 
         <Switch>

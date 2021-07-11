@@ -1,10 +1,11 @@
-import UsersListing from './../../reusableComponents/UsersListing/UsersListing';
+import classes from './AdminDash.module.css';
+import UtilityBar from "../../reusableComponents/UtilityBar/UtilityBar";
 
 const AdminDash = () => {
     return (
         <div>
-            <h2>Admin dashboard</h2>
-            <UsersListing></UsersListing>
+            <UtilityBar></UtilityBar>
+
         </div>
     );
 };
