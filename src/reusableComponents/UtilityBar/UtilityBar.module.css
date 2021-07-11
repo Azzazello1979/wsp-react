@@ -6,9 +6,9 @@
 }
 
 .selected {
-    color: white;
+    color: white !important;
 }
 
 .selected > * {
-    color: white;
+    color: white !important;
 }

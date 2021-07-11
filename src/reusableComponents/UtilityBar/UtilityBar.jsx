@@ -23,32 +23,37 @@ const UtilityBar = () => {
 
     const location = useLocation();
 
-    const [utilityBarMode, setUtilityBarMode] = useState(location.pathname === '/admin' ? 'admin' : 'user'); // 'user' OR 'admin'
-    const [value, setValue] = useState('home');
+    const [utilityBarMode] = useState(location.pathname === '/admin' ? 'admin' : 'user'); // 'user' OR 'admin'
+    const [value, setValue] = useState(utilityBarMode === 'user' ? 'home' : 'users');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-    const userMode = <Fragment>
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Home" value="home" icon={<HomeIcon />} />
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Filter" value="filter" icon={<FilterListIcon />} />
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Orders" value="history" icon={<HistoryIcon />} />
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="User" value="user" icon={<FaceIcon />} />
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Cart" value="cart" icon={<ShoppingCartIcon />} />
-    </Fragment>;
+    const bottomNavigationActionClasses = {
+        root: classes['bottom-navigation-action-root'],
+        selected: classes['selected'],
+    };
 
-    const adminMode = <Fragment>
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Users" value="users" icon={<GroupIcon />} />
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Upload Products" value="upload" icon={<BackupIcon />} />
-        <BottomNavigationAction classes={{ root: classes['bottom-navigation-action-root'], selected: classes.selected }} label="Edit Products" value="edit" icon={<EditIcon />} />
-    </Fragment>;
+    const userMode = <BottomNavigation value={value} onChange={handleChange}>
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Home" value="home" icon={<HomeIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Filter" value="filter" icon={<FilterListIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Favorites" value="favorites" icon={<FavoriteIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Orders" value="history" icon={<HistoryIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="User" value="user" icon={<FaceIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Cart" value="cart" icon={<ShoppingCartIcon />} />
+    </BottomNavigation>;
+
+    const adminMode = <BottomNavigation value={value} onChange={handleChange}>
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Users" value="users" icon={<GroupIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Upload Products" value="upload" icon={<BackupIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Edit Products" value="edit" icon={<EditIcon />} />
+    </BottomNavigation>;
 
     return (
-        <BottomNavigation value={value} onChange={handleChange}>
+        <Fragment>
             {utilityBarMode === 'user' ? userMode : adminMode}
-        </BottomNavigation>
+        </Fragment>
     );
 };
 
