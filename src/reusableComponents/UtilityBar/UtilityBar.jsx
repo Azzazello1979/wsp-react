@@ -17,17 +17,20 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useState } from 'react';
 import classes from './UtilityBar.module.css';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const UtilityBar = () => {
 
     const location = useLocation();
+    const history = useHistory();
 
     const [utilityBarMode] = useState(location.pathname.includes('/admin') ? 'admin' : 'user'); // 'user' OR 'admin'
     const [value, setValue] = useState(utilityBarMode === 'user' ? 'home' : 'users');
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        history.push(newValue);
+
     };
 
     const bottomNavigationActionClasses = {
@@ -45,9 +48,10 @@ const UtilityBar = () => {
     </BottomNavigation>;
 
     const adminMode = <BottomNavigation value={value} onChange={handleChange}>
-        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Edit Users" value="users" icon={<GroupIcon />} />
-        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Upload Products" value="upload" icon={<BackupIcon />} />
-        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Edit Products" value="edit" icon={<EditIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Admin Home" value="/admin" icon={<HomeIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Edit Users" value="/admin/edit-users" icon={<GroupIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Upload Products" value="/admin/upload-products" icon={<BackupIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Edit Products" value="/admin/edit-products" icon={<EditIcon />} />
     </BottomNavigation>;
 
     return (
