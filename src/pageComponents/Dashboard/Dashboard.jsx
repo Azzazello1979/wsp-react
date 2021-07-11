@@ -1,16 +1,16 @@
-import classes from './UserDash.module.css';
+import classes from './Dashboard.module.css';
 import { Route, useLocation } from 'react-router-dom';
 
 import UtilityBar from "../../reusableComponents/UtilityBar/UtilityBar";
-import ProductsListing from "../../reusableComponents/ProductsListing/ProductsListing";
-import Cart from './Cart/Cart';
 import Landing from './Landing/Landing';
+import ProductsListing from './ProductsListing/ProductsListing';
 import Favorites from './Favorites/Favorites';
 import Orders from './Orders/Orders';
-import EditUser from './EditUser/EditUser';
+import UserProfile from './UserProfile/UserProfile';
+import Cart from './Cart/Cart';
 
 
-const UserDash = () => {
+const Dashboard = () => {
 
     const location = useLocation();
 
@@ -29,8 +29,8 @@ const UserDash = () => {
             <Route path="/dashboard/orders">
                 <Orders></Orders>
             </Route>
-            <Route path="/dashboard/editUser">
-                <EditUser></EditUser>
+            <Route path="/dashboard/user-profile">
+                <UserProfile></UserProfile>
             </Route>
             <Route path="/dashboard/cart">
                 <Cart></Cart>
@@ -40,4 +40,4 @@ const UserDash = () => {
     );
 };
 
-export default UserDash;
+export default Dashboard;

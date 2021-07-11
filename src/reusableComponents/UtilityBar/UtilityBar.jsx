@@ -23,7 +23,7 @@ const UtilityBar = () => {
 
     const location = useLocation();
 
-    const [utilityBarMode] = useState(location.pathname === '/admin' ? 'admin' : 'user'); // 'user' OR 'admin'
+    const [utilityBarMode] = useState(location.pathname.includes('/admin') ? 'admin' : 'user'); // 'user' OR 'admin'
     const [value, setValue] = useState(utilityBarMode === 'user' ? 'home' : 'users');
 
     const handleChange = (event, newValue) => {
@@ -45,7 +45,7 @@ const UtilityBar = () => {
     </BottomNavigation>;
 
     const adminMode = <BottomNavigation value={value} onChange={handleChange}>
-        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Users" value="users" icon={<GroupIcon />} />
+        <BottomNavigationAction classes={bottomNavigationActionClasses} label="Edit Users" value="users" icon={<GroupIcon />} />
         <BottomNavigationAction classes={bottomNavigationActionClasses} label="Upload Products" value="upload" icon={<BackupIcon />} />
         <BottomNavigationAction classes={bottomNavigationActionClasses} label="Edit Products" value="edit" icon={<EditIcon />} />
     </BottomNavigation>;

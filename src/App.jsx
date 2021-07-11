@@ -1,8 +1,8 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Login from './pageComponents/Login/Login';
-import UserDash from './pageComponents/UserDash/UserDash';
-import AdminDash from './pageComponents/AdminDash/AdminDash';
+import Dashboard from './pageComponents/Dashboard/Dashboard';
+import Admin from './pageComponents/Admin/Admin';
 import About from './pageComponents/About/About';
 import NotFound from './pageComponents/NotFound/NotFound';
 import MainHeader from './reusableComponents/MainHeader/MainHeader';
@@ -92,10 +92,10 @@ function App() {
             <Login></Login>
           </Route>
           <Route path="/dashboard" >
-            <UserDash></UserDash>
+            <Dashboard></Dashboard>
           </Route>
           <Route path="/admin" >
-            <AdminDash></AdminDash>
+            <Admin></Admin>
           </Route>
           <Route path="/about" >
             <About></About>

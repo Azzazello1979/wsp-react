@@ -1,4 +1,4 @@
-import ProductThumb from "../../reusableComponents/ProductThumb/ProductThumb";
+import ProductThumb from '../../../reusableComponents/ProductThumb/ProductThumb';
 import classes from './ProductsListing.module.css';
 import { useSelector } from 'react-redux';
 
