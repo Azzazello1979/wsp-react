@@ -8,6 +8,7 @@ import NotFound from './pageComponents/NotFound/NotFound';
 import MainHeader from './reusableComponents/MainHeader/MainHeader';
 import SnackBarBaby from './reusableComponents/SnackBarBaby/SnackBarBaby';
 
+
 import Footer from './reusableComponents/Footer/Footer';
 import classes from './App.module.css';
 
@@ -103,6 +104,7 @@ function App() {
             <NotFound></NotFound>
           </Route>
         </Switch>
+
       </main>
       <footer className={classes['app-footer']}><Footer></Footer></footer>
     </div>
