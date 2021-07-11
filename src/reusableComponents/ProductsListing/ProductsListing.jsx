@@ -5,10 +5,9 @@ import { useSelector } from 'react-redux';
 const ProductsListing = () => {
 
     const products = useSelector(state => state.productsSlice.products);
-    console.log(products);
 
     return (
-        <div className={classes['products-wrapper']}>
+        <div className={classes['products-listing-wrapper']}>
             {products && products.map(p => <ProductThumb key={p._id} title={p.title}></ProductThumb>)}
         </div>
     );

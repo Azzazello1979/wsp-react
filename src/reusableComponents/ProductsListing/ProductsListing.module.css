@@ -1,8 +1,10 @@
-.products-wrapper{
+.products-listing-wrapper {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
+    padding: 20px;
+    background: var(--lightblue);
 }
-.products-wrapper > * {
-    margin-top: 20px;
+.products-listing-wrapper > * {
+    margin: 10px ;
 }

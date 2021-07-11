@@ -1,5 +1,6 @@
 .main-header-wrapper {
-    height: 20vh;
+    height: 10vh;
     border: 1px solid blue;
     padding: 10px;
+    background: var(--mediumblue);
 }

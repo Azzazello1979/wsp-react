@@ -1,9 +1,11 @@
 .footer-wrapper {
-    height: 20vh;
+    height: 10vh;
     border: 1px solid blue;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    background: var(--mediumblue);
+    color: white;
 }
 
