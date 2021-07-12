@@ -1,0 +1,24 @@
+.upload-products-wrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    background: var(--lightblue);
+}
+
+.upload-products-form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.form-control {
+    margin: 5px auto;
+}
+
+.input {
+    background: white;
+    border-radius: 4px;
+}
