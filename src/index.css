@@ -5,6 +5,7 @@
   --mediumblue: rgb(11, 55, 138);
 }
 
+
 body {
   margin: 0 ;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,12 +15,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  margin: 0;
-}
-
 .text-centered {
   text-align: center;
 }
-
-
