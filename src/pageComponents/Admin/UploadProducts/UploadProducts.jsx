@@ -1,3 +1,5 @@
+import mclasses from './UploadProducts.module.css';
+
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useState } from 'react';
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
 
 // bring this in from db--> store later
 const categories = [
@@ -31,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+    },
+    filepicker: {
+        color: 'green'
     },
 }));
 
@@ -117,6 +123,26 @@ export default function UploadProducts() {
                                 multiline
                                 rows="10"
                             />
+                        </Grid>
+
+                        {/* FILE PICKER */}
+                        <Grid item xs={12}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                hidden
+                                id="filepicker"
+                            />
+                            <label htmlFor="filepicker">
+                                <Button
+                                    disableElevation
+                                    variant="contained"
+                                    component="span"
+                                    startIcon={<CameraAltIcon />}
+                                    classes={{ root: mclasses.root }} >
+                                    Pick Image
+                                </Button>
+                            </label>
                         </Grid>
 
                     </Grid>
