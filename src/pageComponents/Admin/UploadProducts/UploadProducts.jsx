@@ -1,35 +1,138 @@
-import classes from './UploadProducts.module.css';
-import TextField from '@material-ui/core/TextField';
+import React from 'react';
 import Button from '@material-ui/core/Button';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import MenuItem from '@material-ui/core/MenuItem';
+import { useState } from 'react';
 
-const UploadProducts = () => {
+// bring this in from db--> store later
+const categories = [
+    'wines', 'books', 'board-games', 'jewellery', 'computer'
+];
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        marginBottom: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(3),
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
+    },
+}));
+
+export default function UploadProducts() {
+    const classes = useStyles();
+
+    const [category, setCategory] = useState('wines');
+    const handleCategoryChange = e => {
+        setCategory(e.target.value);
+    };
+
     return (
-        <div className={classes['upload-products-wrapper']}>
-            <form className={classes['upload-products-form']}>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <div className={classes.paper}>
 
-                <div className={classes['form-control']}><TextField id="title" label="Title" variant="outlined" classes={{ root: classes['input'] }} /></div>
+                <form className={classes.form} noValidate>
+                    <Grid container spacing={2}>
 
-                {/* CATEGORY - DROPDOWN */}
+                        {/* TITLE */}
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                id="title"
+                                name="title"
+                                label="Title"
+                                required
+                                fullWidth
+                                autoFocus
+                            />
+                        </Grid>
 
-                <div className={classes['form-control']}><TextField id="subheader" label="Subheader" variant="outlined" classes={{ root: classes['input'] }} /></div>
+                        {/* CATEGORY */}
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                id="category"
+                                name="category"
+                                label="Category"
+                                required
+                                fullWidth
+                                select
+                                value={category}
+                                onChange={handleCategoryChange}
+                            >
+                                {categories.map(category => <MenuItem key={category} value={category}>{category}</MenuItem>)}
+                            </TextField>
+                        </Grid>
 
-                {/* PRICE */}
+                        {/* SUBHEADER */}
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                id="subheader"
+                                name="subheader"
+                                label="Subheader"
+                                required
+                                fullWidth
+                            />
+                        </Grid>
 
-                <div className={classes['form-control']}><TextField id="description" label="Description" variant="outlined" multiline rowsMax={10} classes={{ root: classes['input'] }} /></div>
+                        {/* PRICE */}
+                        <Grid item xs={12}>
+                            <TextField
+                                type="number"
+                                variant="outlined"
+                                id="price"
+                                name="price"
+                                label="price"
+                                required
+                                fullWidth
+                            />
+                        </Grid>
 
-                <input accept="image/*" id="file-pick" type="file" hidden />
-                <div className={classes['form-control']}><label htmlFor="file-pick">
-                    <Button variant="contained" color="primary" component="span">
-                        Select image
+                        {/* DESCRIPTION */}
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                id="description"
+                                name="description"
+                                label="description"
+                                required
+                                fullWidth
+                                multiline
+                                rows="10"
+                            />
+                        </Grid>
+
+                    </Grid>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Upload
                     </Button>
-                </label></div>
 
-                <div className={classes['form-control']}><Button variant="contained" color="secondary" startIcon={<CloudUploadIcon />} >Upload</Button></div>
+                </form>
+            </div>
 
-            </form>
-        </div>
+        </Container>
     );
-};
-
-export default UploadProducts;
+}
