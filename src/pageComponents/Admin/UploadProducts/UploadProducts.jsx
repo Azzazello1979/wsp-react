@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UploadProducts() {
+
     const classes = useStyles();
 
     const [category, setCategory] = useState('wines');
@@ -83,7 +84,7 @@ export default function UploadProducts() {
         inputChangeHandler: descriptionChangeHandler,
         inputBlurHandler: descriptionBlurHandler,
         reset: descriptionReset
-    } = useInput(input => input.length > 30);
+    } = useInput(input => input.length > 150);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -202,7 +203,7 @@ export default function UploadProducts() {
                                 value={descriptionValue}
                                 onChange={descriptionChangeHandler}
                                 onBlur={descriptionBlurHandler}
-                                helperText={descriptionHasError && 'Description has to be minimum 30 chars long!'}
+                                helperText={descriptionHasError && 'Description has to be minimum 150 chars long!'}
                             />
                         </Grid>
 

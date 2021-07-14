@@ -8,10 +8,10 @@ const useInput = (valueValidatorFn) => {
     const valueIsValid = valueValidatorFn(enteredValue);
     const hasError = isTouched && !valueIsValid;
 
-
     const inputChangeHandler = e => {
         setEnteredValue(e.target.value);
     };
+
     const inputBlurHandler = () => {
         setIsTouched(true);
     };
