@@ -1,4 +1,5 @@
 import mclasses from './UploadProducts.module.css';
+import useInput from './../../../customHooks/use-input';
 
 import React from 'react';
 import Button from '@material-ui/core/Button';
@@ -8,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 
 // bring this in from db--> store later
@@ -48,12 +49,76 @@ export default function UploadProducts() {
         setCategory(e.target.value);
     };
 
+    const [imageSelected, setImageSelected] = useState(false);
+
+    const imagePickerRef = useRef();
+
+    const {
+        value: titleValue,
+        hasError: titleHasError,
+        inputChangeHandler: titleChangeHandler,
+        inputBlurHandler: titleBlurHandler,
+        reset: titleReset
+    } = useInput(input => input.length > 5);
+
+    const {
+        value: subheaderValue,
+        hasError: subheaderHasError,
+        inputChangeHandler: subheaderChangeHandler,
+        inputBlurHandler: subheaderBlurHandler,
+        reset: subheaderReset
+    } = useInput(input => input.length > 5);
+
+    const {
+        value: priceValue,
+        hasError: priceHasError,
+        inputChangeHandler: priceChangeHandler,
+        inputBlurHandler: priceBlurHandler,
+        reset: priceReset
+    } = useInput(input => input);
+
+    const {
+        value: descriptionValue,
+        hasError: descriptionHasError,
+        inputChangeHandler: descriptionChangeHandler,
+        inputBlurHandler: descriptionBlurHandler,
+        reset: descriptionReset
+    } = useInput(input => input.length > 30);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        // send to backend
+        console.log({
+            title: titleValue,
+            category: category,
+            subheader: subheaderValue,
+            price: priceValue,
+            description: descriptionValue,
+            imageUrl: imagePickerRef.current.value,
+        });
+
+        // reset inputs
+        titleReset();
+        setCategory('wines');
+        subheaderReset();
+        priceReset();
+        descriptionReset();
+        setImageSelected(false);
+    };
+
+    const handleImagePickerChange = () => {
+        imagePickerRef.current.value ? setImageSelected(true) : setImageSelected(false)
+    };
+
+    const formIsValid = !titleHasError && !subheaderHasError && !priceHasError && !descriptionHasError && imageSelected;
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
 
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
 
                         {/* TITLE */}
@@ -66,6 +131,10 @@ export default function UploadProducts() {
                                 required
                                 fullWidth
                                 autoFocus
+                                value={titleValue}
+                                onChange={titleChangeHandler}
+                                onBlur={titleBlurHandler}
+                                helperText={titleHasError && 'Title length needs to be at least 6 characters!'}
                             />
                         </Grid>
 
@@ -95,6 +164,10 @@ export default function UploadProducts() {
                                 label="Subheader"
                                 required
                                 fullWidth
+                                value={subheaderValue}
+                                onChange={subheaderChangeHandler}
+                                onBlur={subheaderBlurHandler}
+                                helperText={subheaderHasError && 'Subheader length needs to be at least 6 characters!'}
                             />
                         </Grid>
 
@@ -108,6 +181,10 @@ export default function UploadProducts() {
                                 label="price"
                                 required
                                 fullWidth
+                                value={priceValue}
+                                onChange={priceChangeHandler}
+                                onBlur={priceBlurHandler}
+                                helperText={priceHasError && 'Please enter price!'}
                             />
                         </Grid>
 
@@ -122,6 +199,10 @@ export default function UploadProducts() {
                                 fullWidth
                                 multiline
                                 rows="10"
+                                value={descriptionValue}
+                                onChange={descriptionChangeHandler}
+                                onBlur={descriptionBlurHandler}
+                                helperText={descriptionHasError && 'Description has to be minimum 30 chars long!'}
                             />
                         </Grid>
 
@@ -132,6 +213,8 @@ export default function UploadProducts() {
                                 accept="image/*"
                                 hidden
                                 id="filepicker"
+                                ref={imagePickerRef}
+                                onChange={handleImagePickerChange}
                             />
                             <label htmlFor="filepicker">
                                 <Button
@@ -147,6 +230,7 @@ export default function UploadProducts() {
 
                     </Grid>
                     <Button
+                        disabled={!formIsValid}
                         type="submit"
                         fullWidth
                         variant="contained"
