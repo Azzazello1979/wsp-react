@@ -1,4 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { DEV_API_BASE } from './../constants/constants';
+import axios from 'axios';
+import { axiosErrorHandler } from './../utils/axiosErrorHandler';
+
+import { authActionCreators } from './authSlice';
+
 
 // PRODUCTS...
 const productsInitialState = {
@@ -8,7 +14,7 @@ const productsSlice = createSlice({
     name: 'productsSlice',
     initialState: productsInitialState,
     reducers: {
-        createProduct(state, action) {
+        storeProduct(state, action) {
             state.products.push(action.payload); // action.payload --> {...}
         },
         deleteProduct(state, action) {
@@ -36,5 +42,27 @@ const productsSlice = createSlice({
     }
 });
 
-export const productActions = productsSlice.actions;
+// this is a thunk ...
+const saveProduct = (productObject) => {
+    return (dispatch) => {
+
+        // 1. send to backend
+        axios.post(`${DEV_API_BASE}/products`, productObject)
+            .then(response => {
+                console.log(response);
+                //update redux
+                dispatch(productActionCreators.storeProduct(productObject));
+
+            })
+            .catch(err => {
+                const errorCode = axiosErrorHandler(err);
+                dispatch(authActionCreators.setError(errorCode));
+            })
+    };
+};
+
+export const productActionCreators = productsSlice.actions;
+export const productThunkCreators = {
+    saveProduct,
+};
 export default productsSlice.reducer;

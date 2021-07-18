@@ -6,6 +6,8 @@ import { AXIOS_STATE } from './../constants/constants';
 
 
 // AUTH...
+// ERROR HANDLER, ERROR MESSAGES ARE STORED IN 'axiosCode' ...
+
 const authInitialState = {
     userLoggedIn: !!localStorage.getItem('WSP-token'),
     userEmail: null,

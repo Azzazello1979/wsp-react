@@ -12,6 +12,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useState, useRef } from 'react';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 
+import { useDispatch } from 'react-redux';
+import { productThunkCreators } from './../../../store/productsSlice';
+
+
 // bring this in from db--> store later
 const categories = [
     'wines', 'books', 'board-games', 'jewellery', 'computer'
@@ -42,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UploadProducts() {
+    const dispatch = useDispatch();
 
     const classes = useStyles();
 
@@ -89,15 +94,15 @@ export default function UploadProducts() {
     const handleSubmit = e => {
         e.preventDefault();
 
-        // send to backend
-        console.log({
+        const newProduct = {
             title: titleValue,
             category: category,
             subheader: subheaderValue,
             price: priceValue,
             description: descriptionValue,
             imageUrl: imagePickerRef.current.value,
-        });
+        };
+        dispatch(productThunkCreators.saveProduct(newProduct));
 
         // reset inputs
         titleReset();
